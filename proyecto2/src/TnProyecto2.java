@@ -5,7 +5,7 @@ import java.util.regex.*;
 public class TnProyecto2 {
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: java TnProyecto2 <input_file>");
+            System.out.println("Uso: java -cp proyecto2/src TnProyecto2 ejercicios/<ejercicio>.txt");
             return;
         }
 
@@ -61,7 +61,8 @@ public class TnProyecto2 {
                     hasElse = false;
                 }
 
-                else if (leaPattern.matcher(line).find() || escPattern.matcher(line).find() || assignPattern.matcher(line).find()) {
+                else if (leaPattern.matcher(line).find() || escPattern.matcher(line).find()
+                        || assignPattern.matcher(line).find()) {
                     if (inConditional) {
                         if (!hasElse) {
                             siCount++;
@@ -86,11 +87,11 @@ public class TnProyecto2 {
                 } else if (fparaPattern.matcher(line).find()) {
                     String loopVar = loopVariables.pop();
                     StringBuilder loopFormula = loopStack.pop();
-                    
+
                     if (siCount > 0 || sinoCount > 0) {
                         loopFormula.append("1 + ");
                     }
-                    
+
                     loopFormula.append("2)");
                     if (!loopStack.isEmpty()) {
                         loopStack.peek().append(loopFormula).append(" + ");
@@ -100,7 +101,7 @@ public class TnProyecto2 {
                         }
                         formula.append(loopFormula);
                     }
-                    
+
                     siCount = 0;
                     sinoCount = 0;
                 }
