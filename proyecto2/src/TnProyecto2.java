@@ -51,7 +51,7 @@ public class TnProyecto2 {
                         conditionalFormula.append(siCount);
                     }
                     if (!loopStack.isEmpty()) {
-                        loopStack.peek().append(" + ").append(conditionalFormula).append(" + ");
+                        loopStack.peek().append(conditionalFormula).append(" + ");
                     } else {
                         if (formula.length() > 0) {
                             formula.append(" + ");
@@ -107,6 +107,7 @@ public class TnProyecto2 {
             }
 
             String finalFormula = formula.toString().replaceAll("\\( \\+ 1", "(1");
+            finalFormula = finalFormula.replaceAll("\\( \\+ ", "(");
             if (finalFormula.endsWith(" + ")) {
                 finalFormula = finalFormula.substring(0, finalFormula.length() - 3);
             }
